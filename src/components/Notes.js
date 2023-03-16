@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import noteContext from '../context/notes/noteContext';
-import AddNotes from "./AddNotes";
 import Notesitems from "./Notesitems";
 
 function Notes(props) {
@@ -41,9 +40,7 @@ function Notes(props) {
 
   return (
     <>
-      <AddNotes showAlert={props.showAlert} />
-
-
+      
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
       </button>

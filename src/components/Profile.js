@@ -25,8 +25,8 @@ const Profile =  () => {
 
     return (
         <div className='col-md-4 my-3'>
-            <h2 className="card-title mb-3"> Profile </h2>
-            <div className="card">
+            <h2 className="card-title my-3 mb-3">Your Profile</h2>
+            <div className="card mt-4">
                 <div className="card-body">
                     <p className="card-title"><strong>Name:</strong> {user.name} </p>
                     <p className="card-text"><strong>Email:</strong> {user.email} </p>
