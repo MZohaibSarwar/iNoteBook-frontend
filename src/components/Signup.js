@@ -8,7 +8,6 @@ function Signup(props) {
 
   const handleClick = async (e) => {
       e.preventDefault();
-      console.log("signup clicked");
 
       const response = await fetch(`${host}/api/auth/createuser`, {
           method: "POST",
@@ -19,10 +18,10 @@ function Signup(props) {
       });
 
       const json = await response.json();
-      console.log(json);
       if(json.success){
           //save the auth-token and redirect
-          localStorage.setItem("token", json.authtoken);
+          localStorage.setItem('token', JSON.stringify(json.authToken));
+          props.showAlert('Account created Successfully!')
           history.push("/");
       }
       else{
@@ -39,7 +38,7 @@ function Signup(props) {
       <form onSubmit={handleClick}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" name='name' value={user.name} onChange={onChange} minLength={5} required/>
+          <input type="text" className="form-control" id="name" name='name' value={user.name} onChange={onChange} minLength={3} required/>
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>

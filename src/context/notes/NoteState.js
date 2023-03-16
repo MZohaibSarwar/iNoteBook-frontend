@@ -14,11 +14,12 @@ function NoteState(props) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwNTgwODQ4MjYxYmE2ZjVmMjkzNjg2In0sImlhdCI6MTY3ODA4MjI1Mn0.HqgiFp6vbKuzA3_fEn_l77BBk8PxMKNMJN3gWwhclU0"
+        "auth-token": JSON.parse(localStorage.getItem("token"))
       },
     });
+    // eslint-disable-next-line
     const json = await response.json();
-    console.log(json);
+    // console.log(json);
     setNotes(json);
   }
 
@@ -30,7 +31,7 @@ function NoteState(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwNTgwODQ4MjYxYmE2ZjVmMjkzNjg2In0sImlhdCI6MTY3ODA4MjI1Mn0.HqgiFp6vbKuzA3_fEn_l77BBk8PxMKNMJN3gWwhclU0"
+        "auth-token": JSON.parse(localStorage.getItem("token"))
       },
       body: JSON.stringify({ title, description, tag })
     });
@@ -47,14 +48,14 @@ function NoteState(props) {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwNTgwODQ4MjYxYmE2ZjVmMjkzNjg2In0sImlhdCI6MTY3ODA4MjI1Mn0.HqgiFp6vbKuzA3_fEn_l77BBk8PxMKNMJN3gWwhclU0"
+        "auth-token": JSON.parse(localStorage.getItem("token"))
       }
     });
+    // eslint-disable-next-line
     const json = response.json();
-    console.log(json);
+    // console.log(json);
 
     //delete on client side
-    console.log('deleting the note with id ' + id);
     const newNotes = notes.filter((note) => { return note._id !== id });
     setNotes(newNotes);
   }
@@ -68,12 +69,13 @@ function NoteState(props) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwNTgwODQ4MjYxYmE2ZjVmMjkzNjg2In0sImlhdCI6MTY3ODA4MjI1Mn0.HqgiFp6vbKuzA3_fEn_l77BBk8PxMKNMJN3gWwhclU0"
+        "auth-token": JSON.parse(localStorage.getItem("token"))
       },
       body: JSON.stringify({title, description, tag})
     });
+    // eslint-disable-next-line
     const json = response.json();
-    console.log(json);
+    // console.log(json);
 
     let newupdateNotes = JSON.parse(JSON.stringify(notes));
     //edit on client side

@@ -4,12 +4,13 @@ import noteContext from '../context/notes/noteContext';
 function AddNotes(props) {
     const { addNote } = useContext(noteContext);
     const [notes, setNotes] = useState({ title: "", description: "", tag: "" });
-    
+
     const addNotesHandler = (e) => {
         e.preventDefault();
         addNote(notes.title, notes.description, notes.tag);
         setNotes({ title: "", description: "", tag: "" });
-        
+        props.showAlert('Notes Added Successfully!')
+
     }
 
     const onChange = (e) => {
@@ -36,9 +37,11 @@ function AddNotes(props) {
                         <option value="General">General</option>
                         <option value="News">News</option>
                         <option value="Sports">Sports</option>
+                        <option value="Education">Education</option>
+                        <option value="Business">Business</option>
                     </select>
                 </div>
-                <button disabled={notes.title.length < 5 || notes.description.length < 5} type="submit" className="btn btn-primary" onClick={addNotesHandler}>Add Note</button>
+                <button disabled={notes.title.length < 3 || notes.description.length < 5} type="submit" className="btn btn-primary" onClick={addNotesHandler}>Add Note</button>
             </form>
         </div>
     )
